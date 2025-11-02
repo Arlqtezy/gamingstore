@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UYMTOPUPGAMINGSTORE</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family: "Poppins", sans-serif; }
+    body { background:#0f1115; color:#fff; }
+    header { background:#161a23; padding:20px; text-align:center; font-size:1.5rem; font-weight:700; color:#00ffff; letter-spacing:1px; box-shadow:0 2px 6px rgba(0,0,0,0.3);}
+    .game-menu {
+      display:flex; overflow-x:auto; background:#1c202b; padding:10px 0; gap:10px; scrollbar-width:none;
+    }
+    .game-menu::-webkit-scrollbar { display:none; }
+    .game-item {
+      flex:0 0 auto; text-align:center; width:80px; cursor:pointer; transition:0.3s; border-radius:10px; padding:6px;
+    }
+    .game-item:hover { background:#252b36; transform:scale(1.05); }
+    .game-item img {
+      width:60px; height:60px; border-radius:50%; object-fit:cover; border:2px solid transparent; transition:0.3s;
+    }
+    .game-item.active img { border-color:#00ffff; }
+    .game-item span { font-size:0.8rem; display:block; margin-top:4px; color:#ccc; }
+
+    .search-box { text-align:center; margin:20px 0; }
+    .search-box input {
+      width:80%; max-width:400px; padding:10px; border-radius:20px; border:none; outline:none;
+    }
+
+    .products { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:20px; padding:20px; }
+    .card {
+      background:#1c202b; border-radius:15px; text-align:center; padding:15px; transition:0.3s;
+    }
+    .card:hover { transform:translateY(-5px); background:#232838; }
+    .card img { width:100%; border-radius:10px; height:120px; object-fit:cover; }
+    .card h3 { font-size:1rem; margin:10px 0 5px; color:#00ffff; }
+    .card p { color:#ccc; font-size:0.9rem; margin-bottom:10px; }
+    .card button {
+      background:#00ffff; color:#000; border:none; border-radius:20px; padding:8px 15px; cursor:pointer; font-weight:600;
+    }
+    .card button:hover { background:#00cccc; }
+
+    footer {
+      background:#161a23; text-align:center; padding:15px; margin-top:30px; display:flex; justify-content:center; gap:40px;
+    }
+    .footer-icon { display:flex; flex-direction:column; align-items:center; color:#00ffff; cursor:pointer; }
+    .footer-icon img { width:24px; height:24px; margin-bottom:5px; filter:invert(77%) sepia(93%) saturate(257%) hue-rotate(121deg) brightness(105%) contrast(101%);}
+    .footer-icon span { font-size:0.8rem; }
+  </style>
+</head>
+<body>
+  <header>UYMTOPUPGAMINGSTORE</header>
+
+  <!-- MENU IKON GAME -->
+  <div class="game-menu" id="gameMenu">
+    <div class="game-item active" data-game="all">
+      <img src="https://cdn-icons-png.flaticon.com/512/889/889190.png" alt="All">
+      <span>All Games</span>
+    </div>
+    <div class="game-item" data-game="PUBG Mobile">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/37/PUBG_Mobile_logo.png" alt="PUBG">
+      <span>PUBG</span>
+    </div>
+    <div class="game-item" data-game="Free Fire">
+      <img src="https://upload.wikimedia.org/wikipedia/en/4/41/Garena_Free_Fire_logo.png" alt="Free Fire">
+      <span>Free Fire</span>
+    </div>
+    <div class="game-item" data-game="Mobile Legends">
+      <img src="https://upload.wikimedia.org/wikipedia/en/3/3c/Mobile_Legends_Bang_Bang_logo.png" alt="Mobile Legends">
+      <span>ML</span>
+    </div>
+    <div class="game-item" data-game="Genshin Impact">
+      <img src="https://upload.wikimedia.org/wikipedia/en/7/73/Genshin_Impact_logo.svg" alt="Genshin">
+      <span>Genshin</span>
+    </div>
+    <div class="game-item" data-game="Valorant">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Valorant_logo.svg" alt="Valorant">
+      <span>Valorant</span>
+    </div>
+    <div class="game-item" data-game="CODM">
+      <img src="https://upload.wikimedia.org/wikipedia/en/0/0c/Call_of_Duty_Mobile_logo.png" alt="CODM">
+      <span>CODM</span>
+    </div>
+    <div class="game-item" data-game="Honkai Star Rail">
+      <img src="https://upload.wikimedia.org/wikipedia/en/b/b5/Honkai_Star_Rail_logo.png" alt="HSR">
+      <span>HSR</span>
+    </div>
+  </div>
+
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Cari paket top-up...">
+  </div>
+
+  <div class="products" id="productList"></div>
+
+  <footer>
+    <div class="footer-icon">
+      <img src="https://cdn-icons-png.flaticon.com/512/1828/1828859.png" alt="Menu">
+      <span>Menu</span>
+    </div>
+    <div class="footer-icon">
+      <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Profile">
+      <span>Profile</span>
+    </div>
+    <div class="footer-icon">
+      <img src="https://cdn-icons-png.flaticon.com/512/597/597177.png" alt="Contact">
+      <span>Kontak</span>
+    </div>
+  </footer>
+
+  <script>
+    const products = [
+      // PUBG
+      {game:'PUBG Mobile', title:'100 UC', price:24000, img:'https://cdn1.codashop.com/S/content/common/images/games/11/cover.jpg'},
+      {game:'PUBG Mobile', title:'500 UC', price:110000, img:'https://cdn1.codashop.com/S/content/common/images/games/11/cover.jpg'},
+      {game:'PUBG Mobile', title:'1000 UC', price:220000, img:'https://cdn1.codashop.com/S/content/common/images/games/11/cover.jpg'},
+      // ML
+      {game:'Mobile Legends', title:'100 Diamond', price:24000, img:'https://cdn1.codashop.com/S/content/common/images/games/10/cover.jpg'},
+      {game:'Mobile Legends', title:'500 Diamond', price:110000, img:'https://cdn1.codashop.com/S/content/common/images/games/10/cover.jpg'},
+      {game:'Mobile Legends', title:'1000 Diamond', price:220000, img:'https://cdn1.codashop.com/S/content/common/images/games/10/cover.jpg'},
+      // FF
+      {game:'Free Fire', title:'100 Diamond', price:23000, img:'https://cdn1.codashop.com/S/content/common/images/games/2/cover.jpg'},
+      {game:'Free Fire', title:'500 Diamond', price:108000, img:'https://cdn1.codashop.com/S/content/common/images/games/2/cover.jpg'},
+      {game:'Free Fire', title:'1000 Diamond', price:215000, img:'https://cdn1.codashop.com/S/content/common/images/games/2/cover.jpg'},
+      // Genshin
+      {game:'Genshin Impact', title:'60 Genesis Crystals', price:16000, img:'https://cdn1.codashop.com/S/content/common/images/games/26/cover.jpg'},
+      {game:'Genshin Impact', title:'980 Genesis Crystals', price:239000, img:'https://cdn1.codashop.com/S/content/common/images/games/26/cover.jpg'},
+      // Valorant
+      {game:'Valorant', title:'475 VP', price:50000, img:'https://cdn1.codashop.com/S/content/common/images/games/91/cover.jpg'},
+      {game:'Valorant', title:'1000 VP', price:95000, img:'https://cdn1.codashop.com/S/content/common/images/games/91/cover.jpg'},
+      // CODM
+      {game:'CODM', title:'80 CP', price:16000, img:'https://cdn1.codashop.com/S/content/common/images/games/6/cover.jpg'},
+      {game:'CODM', title:'420 CP', price:78000, img:'https://cdn1.codashop.com/S/content/common/images/games/6/cover.jpg'},
+      // HSR
+      {game:'Honkai Star Rail', title:'60 Stellar Jade', price:16000, img:'https://cdn1.codashop.com/S/content/common/images/games/79/cover.jpg'},
+      {game:'Honkai Star Rail', title:'980 Stellar Jade', price:239000, img:'https://cdn1.codashop.com/S/content/common/images/games/79/cover.jpg'}
+    ];
+
+    const productList = document.getElementById('productList');
+    const searchInput = document.getElementById('searchInput');
+    const gameMenu = document.getElementById('gameMenu');
+
+    const formatRp = num => new Intl.NumberFormat('id-ID',{style:'currency',currency:'IDR'}).format(num);
+
+    function renderProducts(filter='all', keyword='') {
+      productList.innerHTML = '';
+      const filtered = products.filter(p => 
+        (filter==='all' || p.game===filter) &&
+        p.title.toLowerCase().includes(keyword.toLowerCase())
+      );
+      filtered.forEach(p => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <img src="${p.img}" alt="${p.title}">
+          <h3>${p.title}</h3>
+          <p>${p.game}</p>
+          <button>Beli ${formatRp(p.price)}</button>
+        `;
+        productList.appendChild(card);
+      });
+    }
+
+    renderProducts();
+
+    gameMenu.addEventListener('click', e => {
+      const item = e.target.closest('.game-item');
+      if(!item) return;
+      document.querySelectorAll('.game-item').forEach(el=>el.classList.remove('active'));
+      item.classList.add('active');
+      const selectedGame = item.getAttribute('data-game');
+      renderProducts(selectedGame, searchInput.value);
+    });
+
+    searchInput.addEventListener('input', e => {
+      const active = document.querySelector('.game-item.active');
+      const selectedGame = active ? active.getAttribute('data-game') : 'all';
+      renderProducts(selectedGame, e.target.value);
+    });
+  </script>
+</body>
+</html>
