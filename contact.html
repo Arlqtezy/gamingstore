@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontak Kami — TopUp Gaming Store</title>
+  <style>
+    :root {
+      --bg: #0f1724;
+      --card: #101b2d;
+      --accent: #ffb86b;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --glass: rgba(255,255,255,0.03);
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: 'Poppins', Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(180deg, #071021, #0f1724);
+      color: var(--text);
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 40px;
+      background: var(--card);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand img {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      border-radius: 8px;
+      background: var(--glass);
+      padding: 6px;
+    }
+
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 80px 20px 50px;
+      background: url('assets/bg-contact.jpg') center/cover no-repeat;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      z-index: 0;
+    }
+
+    .hero h1, .hero p {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 40px;
+      margin-bottom: 12px;
+      color: var(--accent);
+      text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #d1d5db;
+    }
+
+    .section {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    .card {
+      background: var(--card);
+      padding: 30px;
+      border-radius: 14px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .card h2 {
+      color: var(--accent);
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    input, textarea, select {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 12px;
+      color: var(--text);
+      font-size: 14px;
+      resize: none;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    button {
+      background: linear-gradient(90deg, var(--accent), #ff8a5b);
+      border: none;
+      padding: 12px 20px;
+      border-radius: 10px;
+      color: #111;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    .contact-info {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .info-box {
+      background: rgba(255,255,255,0.03);
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .info-box h3 {
+      margin-top: 0;
+      color: var(--accent);
+    }
+
+    .info-box p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    /* Tombol WhatsApp */
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      color: white;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      cursor: pointer;
+      transition: 0.3s;
+      text-decoration: none;
+    }
+
+    .whatsapp-btn:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      background: var(--card);
+      text-align: center;
+      padding: 20px;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand">
+      <img src="assets/logo-shop.png" alt="Logo Toko">
+      <h1>TopUp Gaming Store</h1>
+    </div>
+    <nav>
+      <a href="index.html">Beranda</a>
+      <a href="profile.html">Tentang Kami</a>
+      <a href="contact.html">Kontak</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Hubungi Kami</h1>
+    <p>Kami siap membantu Anda untuk semua kebutuhan top up game Anda.</p>
+  </section>
+
+  <section class="section">
+    <div class="card">
+      <h2>Kirim Pesan</h2>
+      <form id="contactForm" onsubmit="sendMessage(event)">
+        <input type="text" id="name" placeholder="Nama Lengkap" required>
+        <input type="email" id="email" placeholder="Email Anda" required>
+        <select id="subject" required>
+          <option value="">Pilih Topik</option>
+          <option>Masalah Transaksi</option>
+          <option>Kerja Sama</option>
+          <option>Pertanyaan Umum</option>
+        </select>
+        <textarea id="message" rows="5" placeholder="Tulis pesan Anda..." required></textarea>
+        <button type="submit">Kirim Pesan ke WhatsApp</button>
+      </form>
+    </div>
+
+    <div class="contact-info">
+      <div class="info-box">
+        <h3>Alamat</h3>
+        <p>Jl. Sultan Agung No. 21, Jakarta Selatan</p>
+      </div>
+      <div class="info-box">
+        <h3>Kontak</h3>
+        <p>📞 +62 895-2824-4580</p>
+        <p>✉️ support@topupgamingstore.id</p>
+      </div>
+      <div class="info-box">
+        <h3>Jam Operasional</h3>
+        <p>Senin – Jumat: 08.00 - 22.00 WIB</p>
+        <p>Sabtu – Minggu: 09.00 - 20.00 WIB</p>
+      </div>
+      <div class="info-box">
+        <h3>Sosial Media</h3>
+        <p>🌐 Instagram: @topupgamingstore</p>
+        <p>🌐 TikTok: @topupgaming.id</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tombol WhatsApp -->
+  <a href="https://wa.me/6289528244580?text=Halo%20Admin%2C%20saya%20ingin%20menanyakan%20tentang%20top%20up%20game." 
+     class="whatsapp-btn" target="_blank" title="Chat Admin Sekarang">
+    💬
+  </a>
+
+  <footer>
+    © 2025 TopUp Gaming Store — Semua hak cipta dilindungi.
+  </footer>
+
+  <script>
+    function sendMessage(event) {
+      event.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const subject = document.getElementById('subject').value;
+      const message = document.getElementById('message').value;
+
+      // Buat link WhatsApp otomatis
+      const phone = '6289528244580';
+      const text = `Halo Admin, saya ${name} (%20${email}%20)\n\nTopik: ${subject}\nPesan:\n${message}`;
+      const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+
+      // Arahkan ke WhatsApp
+      window.open(url, '_blank');
+
+      document.getElementById('contactForm').reset();
+    }
+  </script>
+
+</body>
+</html>
